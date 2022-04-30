@@ -1,27 +1,32 @@
 <div class="wrapper">
     <form [formGroup]="myForm" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)" novalidate>
         <div>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" class="width100">
                 <mat-label>FirstName</mat-label>
-                <input matInput formControlName="firstName" id="firstName">
+                <!-- markFieldAsTouched is needed to validate with first input from user -->
+                <input matInput formControlName="firstName" id="firstName" (change)="this.myForm.get('firstName').markAsTouched()">
+                <mat-error *ngIf="this.myForm.get('firstName').invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" class="width100">
                 <mat-label>LastName</mat-label>
                 <input matInput formControlName="lastName" id="lastName">
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="fill">
+            <app-mat-datepicker-fw></app-mat-datepicker-fw>
+        </div>
+        <div>
+            <mat-form-field appearance="fill" class="width100">
                 <mat-label>Selection</mat-label>
                 <mat-select>
                     <mat-option *ngFor="let item of list" value="item.name">{{item.id}} - {{item.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
-        <div>
-            <button mat-flat-button color="primary" type="submit" [disabled]="!myForm.valid">Submit</button>
+        <div class="width100 align-btn">
+            <button mat-flat-button color="primary" type="submit" class="form-btn" [disabled]="!myForm.valid">Submit</button>
         </div>
     </form>
 </div>
