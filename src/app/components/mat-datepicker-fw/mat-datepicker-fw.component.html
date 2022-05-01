@@ -1,9 +1,46 @@
 <mat-form-field appearance="fill" style="width: 100%;">
     <mat-label>Enter a date range</mat-label>
-    <mat-date-range-input [rangePicker]="picker">
-        <input matStartDate placeholder="Start date">
-        <input matEndDate placeholder="End date">
+    <mat-date-range-input [formGroup]="range" [rangePicker]="picker" required>
+        <input matStartDate placeholder="Start date" formControlName="start">
+        <input matEndDate placeholder="End date" formControlName="end" *ngIf="isRange">
     </mat-date-range-input>
-    <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
-    <mat-date-range-picker #picker></mat-date-range-picker>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker>
+        <mat-datepicker-actions class="">
+            <div class="row">
+                <div>
+                    <span style="margin-right: 1px; font-size: larger;">Beginn</span>
+                    <a mat-mini-fab color="primary" style="transform: scale(0.6);" (click)="removeMin()"><mat-icon>remove</mat-icon></a>
+                    <a mat-button [matMenuTriggerFor]="menuHour" style="font-size: larger; margin-left: -15px;">{{beginTime | date:'HH'}}</a>
+                    <mat-menu #menuHour="matMenu">
+                        <a mat-menu-item *ngFor="let option of [0,6,12,18,20]" (click)="setHour(option)">{{option}}</a>
+                    </mat-menu>
+                    <span style="font-size: larger;">:</span>
+                    <a mat-button [matMenuTriggerFor]="menuMin" style="font-size: larger; margin-left: -15px;">{{beginTime | date:'mm'}}</a>
+                    <mat-menu #menuMin="matMenu">
+                        <a mat-menu-item *ngFor="let option of [0,15,30,45]" (click)="setMin(option)">{{option}}</a>
+                    </mat-menu>
+                    <a mat-mini-fab color="primary" style="transform: scale(0.6); margin-left: -15px;" (click)="addMin()"><mat-icon>add</mat-icon></a>
+                </div>
+                <div *ngIf="isRange">
+                    <span style="margin-right: 15px; font-size: larger;">Ende</span>
+                    <button mat-mini-fab color="primary" style="transform: scale(0.6);" (click)="removeMinEnd()"><mat-icon>remove</mat-icon></button>
+                    <button mat-button [matMenuTriggerFor]="menuHourEnd" style="font-size: larger; margin-left: -15px;">{{endTime | date:'HH'}}</button>
+                    <mat-menu #menuHourEnd="matMenu">
+                        <button mat-menu-item *ngFor="let option of [0,6,12,18,20]" (click)="setHourEnd(option)">{{option}}</button>
+                    </mat-menu>
+                    <span style="font-size: larger;">:</span>
+                    <button mat-button [matMenuTriggerFor]="menuMinEnd" style="font-size: larger; margin-left: -15px;">{{endTime | date:'mm'}}</button>
+                    <mat-menu #menuMinEnd="matMenu">
+                        <button mat-menu-item *ngFor="let option of [0,15,30,45]" (click)="setMinEnd(option)">{{option}}</button>
+                    </mat-menu>
+                    <button mat-mini-fab color="primary" style="transform: scale(0.6); margin-left: -15px;" (click)="addMinEnd()"><mat-icon>add</mat-icon></button>
+                </div>
+                <div style="text-align: right; margin-top: 20px;">
+                    <button mat-flat-button color="primary" (click)="onSubmit1()" style="margin-left: 5px;" matDateRangePickerApply>Speichern</button>
+                    <button mat-flat-button matDateRangePickerCancel>Abbrechen</button>
+                </div>
+            </div>
+        </mat-datepicker-actions>
+    </mat-date-range-picker>
 </mat-form-field>
