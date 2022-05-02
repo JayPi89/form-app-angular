@@ -10,6 +10,9 @@ import { validateUniqueListEntry } from './form.validator';
 })
 export class FormComponent implements OnInit {
 
+  start = new Date();
+  end = new Date();
+
   myForm: any;
   /**
    * Dummy Datas

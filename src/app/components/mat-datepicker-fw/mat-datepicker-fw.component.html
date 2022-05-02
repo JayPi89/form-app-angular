@@ -10,7 +10,7 @@
             <div class="row">
                 <div>
                     <span style="margin-right: 1px; font-size: larger;">Beginn</span>
-                    <a mat-mini-fab color="primary" style="transform: scale(0.6);" (click)="removeMin()"><mat-icon>remove</mat-icon></a>
+                    <a mat-mini-fab color="primary" style="transform: scale(0.6); margin-left: 25px;" (click)="addMin(-15)"><mat-icon>remove</mat-icon></a>
                     <a mat-button [matMenuTriggerFor]="menuHour" style="font-size: larger; margin-left: -15px;">{{beginTime | date:'HH'}}</a>
                     <mat-menu #menuHour="matMenu">
                         <a mat-menu-item *ngFor="let option of [0,6,12,18,20]" (click)="setHour(option)">{{option}}</a>
@@ -24,17 +24,17 @@
                 </div>
                 <div *ngIf="isRange">
                     <span style="margin-right: 15px; font-size: larger;">Ende</span>
-                    <button mat-mini-fab color="primary" style="transform: scale(0.6);" (click)="removeMinEnd()"><mat-icon>remove</mat-icon></button>
+                    <button mat-mini-fab color="primary" style="transform: scale(0.6); margin-left: 25px;" (click)="addMin(-15, false)"><mat-icon>remove</mat-icon></button>
                     <button mat-button [matMenuTriggerFor]="menuHourEnd" style="font-size: larger; margin-left: -15px;">{{endTime | date:'HH'}}</button>
                     <mat-menu #menuHourEnd="matMenu">
-                        <button mat-menu-item *ngFor="let option of [0,6,12,18,20]" (click)="setHourEnd(option)">{{option}}</button>
+                        <button mat-menu-item *ngFor="let option of [0,6,12,18,20]" (click)="setHour(option, false)">{{option}}</button>
                     </mat-menu>
                     <span style="font-size: larger;">:</span>
                     <button mat-button [matMenuTriggerFor]="menuMinEnd" style="font-size: larger; margin-left: -15px;">{{endTime | date:'mm'}}</button>
                     <mat-menu #menuMinEnd="matMenu">
-                        <button mat-menu-item *ngFor="let option of [0,15,30,45]" (click)="setMinEnd(option)">{{option}}</button>
+                        <button mat-menu-item *ngFor="let option of [0,15,30,45]" (click)="setMin(option, false)">{{option}}</button>
                     </mat-menu>
-                    <button mat-mini-fab color="primary" style="transform: scale(0.6); margin-left: -15px;" (click)="addMinEnd()"><mat-icon>add</mat-icon></button>
+                    <button mat-mini-fab color="primary" style="transform: scale(0.6); margin-left: -15px;" (click)="addMin(15, false)"><mat-icon>add</mat-icon></button>
                 </div>
                 <div style="text-align: right; margin-top: 20px;">
                     <button mat-flat-button color="primary" (click)="onSubmit1()" style="margin-left: 5px;" matDateRangePickerApply>Speichern</button>
