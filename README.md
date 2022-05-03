@@ -1,14 +1,16 @@
+## Story
 This app is a example of a form with all important members
 
-TechStack:
+## Techstack
     - AngularCLI 13
     - Angular Material
 
-Roadmap:
+## Roadmap
     - frontend - add reactive forms (done)
     - frontend - add angular-material forms (done)
         - frontend - add formDirective for formReset (done)
     - frontend - add custom syncvalidator in own class (done)
+    
     - all - setUp user-story for better understanding (future)
     - frontend - integrate http-service (future)
     - backend - setUp spring-boot / nodejs backend (future)
