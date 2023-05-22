@@ -1,0 +1,20 @@
+.panel {
+    width: 256px;
+
+    .tile {
+        background-color: rgb(236, 236, 236);
+        border: lightgray solid 1px;
+        &:hover {
+            border: 1px solid grey !important;
+            cursor: pointer;
+        }
+
+        &.one {
+            background-color: aqua;
+        }
+    }
+}
+
+.mat-grid-tile {
+    max-width: 256px !important;
+}

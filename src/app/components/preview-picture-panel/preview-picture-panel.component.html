@@ -1,0 +1,14 @@
+<mat-grid-list *ngIf="calculatedView === 'one'" cols="1" rowHeight="144px" class="panel">
+    <mat-grid-tile *ngFor="let url of logoUrls" class="tile one">{{ url }}</mat-grid-tile>
+</mat-grid-list>
+<mat-grid-list *ngIf="calculatedView === 'twoAndMore'" cols="2" rowHeight="72px" class="panel" gutterSize="3px">
+    <mat-grid-tile *ngFor="let url of logoUrls" class="tile one">{{ url }}</mat-grid-tile>
+    <mat-grid-tile class="tile"><mat-icon>add</mat-icon></mat-grid-tile>
+</mat-grid-list>
+<mat-grid-list *ngIf="calculatedView === 'four'" cols="2" rowHeight="72px" class="panel" gutterSize="3px">
+    <mat-grid-tile *ngFor="let url of logoUrls" class="tile one">{{ url }}</mat-grid-tile>
+</mat-grid-list>
+<mat-grid-list *ngIf="calculatedView === 'unlimited'" cols="2" rowHeight="72px" class="panel" gutterSize="3px">
+    <mat-grid-tile *ngFor="let url of logoUrls | slice:0:3" class="tile one">{{ url }}</mat-grid-tile>
+    <mat-grid-tile class="tile"><mat-icon>more_horiz</mat-icon></mat-grid-tile>
+</mat-grid-list>

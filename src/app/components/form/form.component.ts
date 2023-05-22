@@ -29,6 +29,14 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  refreshStartDate(start: Date) {
+    this.start = start;
+  }
+
+  refreshEndDate(end: Date) {
+    this.end = end;
+  }
+
   /**
    * Added formDirective, due to working with AngularMaterial
    */

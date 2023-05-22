@@ -15,7 +15,7 @@
             </mat-form-field>
         </div>
         <div>
-            <app-mat-datepicker-fw (startDateEvent)="start" (endDateEvent)="end"></app-mat-datepicker-fw>
+            <app-mat-datepicker-fw (startDateEvent)="refreshStartDate($event)" (endDateEvent)="refreshEndDate($event)"></app-mat-datepicker-fw>
         </div>
         <div>
             {{ start | date: 'dd.MM.yyyy HH:mm' }}  -  {{ end | date: 'dd.MM.yyyy HH:mm' }}

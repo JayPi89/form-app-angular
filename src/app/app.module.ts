@@ -6,21 +6,30 @@ import { AppComponent } from './app.component';
 import { FormComponent } from './components/form/form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material-module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerFwComponent } from './components/mat-datepicker-fw/mat-datepicker-fw.component';
+import { GanttModule } from '@syncfusion/ej2-angular-gantt';
+import { GanttComponent } from './components/gantt/gantt.component';
+import { MainLayoutComponent } from './components/main-layout/main-layout.component';
+import { PreviewPicturePanelComponent } from './components/preview-picture-panel/preview-picture-panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
-    MatDatepickerFwComponent
+    MatDatepickerFwComponent,
+    GanttComponent,
+    MainLayoutComponent,
+    PreviewPicturePanelComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    GanttModule
   ],
   providers: [],
   bootstrap: [AppComponent]

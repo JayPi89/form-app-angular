@@ -1,0 +1,30 @@
+<mat-card>
+    <mat-card-title>Anzahl Karten und Durchläufe eingeben</mat-card-title>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Anzahl Karten</mat-label>
+        <input matInput [(ngModel)]="numCards" type="number" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Anzahl Durchläufe</mat-label>
+        <input matInput [(ngModel)]="numRuns" type="number" required>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="runSimulation()">Bestätigen</button>
+    </mat-card-actions>
+  </mat-card>
+  <div *ngIf="simulationComplete">
+    <mat-card>
+      <mat-card-title>Trefferwahrscheinlichkeit mit Monty-Hall-Effekt</mat-card-title>
+      <mat-card-content>
+        {{ successProbabilityWithSwitch | percent }}
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-title>Trefferwahrscheinlichkeit ohne Monty-Hall-Effekt</mat-card-title>
+      <mat-card-content>
+        {{ successProbability | percent }}
+      </mat-card-content>
+    </mat-card>
+  </div>
