@@ -1,1 +1,26 @@
-<app-form></app-form>
+<app-main-layout *ngIf="false"></app-main-layout>
+<app-form *ngIf="false"></app-form>
+<div *ngIf="false" style="width: 100%; overflow: hidden;">
+    <app-gantt></app-gantt>
+</div>
+
+<div>-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</div>
+<div style="max-width: 788px;">
+    <mat-grid-list cols="2" rowHeight="150px" class="panel" gutterSize="10px">
+        <!-- Row One -->
+        <mat-grid-tile class="tile">1</mat-grid-tile>
+        <mat-grid-tile class="tile"><app-preview-picture-panel [logoUrls]="one"></app-preview-picture-panel> </mat-grid-tile>
+        <!-- Row Two -->
+        <mat-grid-tile class="tile">Name</mat-grid-tile>
+        <mat-grid-tile class="tile"><app-preview-picture-panel [logoUrls]="two"></app-preview-picture-panel> </mat-grid-tile>
+        <!-- Row Three -->
+        <mat-grid-tile class="tile">Name</mat-grid-tile>
+        <mat-grid-tile class="tile"><app-preview-picture-panel [logoUrls]="three"></app-preview-picture-panel> </mat-grid-tile>
+        <!-- Row Four -->
+        <mat-grid-tile class="tile">Name</mat-grid-tile>
+        <mat-grid-tile class="tile"><app-preview-picture-panel [logoUrls]="four"></app-preview-picture-panel> </mat-grid-tile>
+        <!-- Row Infinity -->
+        <mat-grid-tile class="tile">Name</mat-grid-tile>
+        <mat-grid-tile class="tile"><app-preview-picture-panel [logoUrls]="infinity"></app-preview-picture-panel> </mat-grid-tile>
+    </mat-grid-list>
+</div>

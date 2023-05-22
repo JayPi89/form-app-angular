@@ -1,7 +1,8 @@
-import {Component, Output, Input, EventEmitter} from '@angular/core';
+import {Component, Output, Input, EventEmitter, ChangeDetectorRef, OnDestroy, ChangeDetectionStrategy} from '@angular/core';
 import {FormControl, FormGroup, FormGroupDirective} from '@angular/forms';
 import {MomentDateAdapter} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import { Subject } from 'rxjs';
 
 export class CustomizedDateAdapter extends MomentDateAdapter {
   override getFirstDayOfWeek() {
@@ -39,6 +40,7 @@ export class MatDatepickerFwComponent {
   @Output() endDateEvent = new EventEmitter<Date>();
   beginTime = new Date();
   endTime = new Date();
+  exampleHeader = ExampleHeader;
 
   range = new FormGroup({
     start: new FormControl(),
@@ -52,6 +54,10 @@ export class MatDatepickerFwComponent {
 
   fireStartDateEvent(value: Date) {
     this.startDateEvent.emit(value);
+  }
+
+  fireEndDateEvent(value: Date) {
+    this.endDateEvent.emit(value);
   }
 
   onSubmit1() {
@@ -69,6 +75,8 @@ export class MatDatepickerFwComponent {
       end.setMinutes(this.endTime.getMinutes());
       this.endTime = end;
       this.range.get('end')?.setValue(end);
+      this.fireEndDateEvent(end);
+      this.fireStartDateEvent(start);
     } catch (error) { }
   }
 
@@ -119,4 +127,23 @@ export class MatDatepickerFwComponent {
     //this.myForm = this.createMyForm();
   }
 
+}
+
+
+@Component({
+  selector: 'example-header',
+  templateUrl: './example-header.html',
+  styleUrls: ['./mat-datepicker-fw.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ExampleHeader<D> implements OnDestroy {
+  private _destroyed = new Subject<void>();
+  title = 'Titel';
+
+  constructor() {}
+
+  ngOnDestroy() {
+    this._destroyed.next();
+    this._destroyed.complete();
+  }
 }

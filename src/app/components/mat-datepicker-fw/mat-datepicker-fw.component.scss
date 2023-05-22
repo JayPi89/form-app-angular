@@ -3,6 +3,25 @@
     height: auto;
 }
 
+mat-menu-item.test {
+    width: 15px;
+}
+
+.mbt20 {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.auto-config {
+    width: 50px;
+}
+
+.center {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .row {
     width: 100%;
 }
@@ -10,4 +29,16 @@
 .withoutArrow {
     transform: scale(0.6);
     width: 80px;
-  }
+}
+
+.highlight {
+    font-size: larger;
+}
+
+.small {
+    transform: scale(0.6);
+}
+
+.width100 {
+    width: 100%;
+}
